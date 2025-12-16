@@ -114,19 +114,3 @@ Costruisci e confronta **almeno due modelli**, ad esempio:
   - Piattaforme editoriali
   - Content moderation
 
----
-## 📦 Deliverable richiesti
-- Notebook Python ben documentato
-- Presentazione finale (10–15 slide)
-- (Opzionale) Demo o dashboard
-
----
-
-## ⭐ Criteri di valutazione
-- Chiarezza e completezza dell’analisi
-- Correttezza tecnica
-- Qualità delle visualizzazioni
-- Capacità di interpretazione dei risultati
-- Qualità della comunicazione finale
-
----
