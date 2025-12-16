@@ -1,9 +1,9 @@
-# ProgettoFinale_RosyAnnaAnto
+# Progetto Finale - Rosy Anna Antonia
 
 ## In questo progetto utilizzeremo un dataset contenente testi etichettati come AI-generated o Human-written, insieme a diverse caratteristiche linguistiche e semantiche.
 
 ## 🎯 Obiettivi del progetto
-Al termine del progetto sarai in grado di:
+Al termine del progetto saremo in grado di:
 
 - Analizzare le **differenze linguistiche** tra testi umani e generati da AI
 - Svolgere un’analisi esplorativa dei dati (EDA)
@@ -40,7 +40,6 @@ Il dataset contiene **500 osservazioni** con le seguenti colonne principali:
   - Sentiment
   - Quality score
   - Plagiarism score
-- Visualizzazioni consigliate:
   - Istogrammi
   - Boxplot
   - Grafici a barre
@@ -52,7 +51,7 @@ Il dataset contiene **500 osservazioni** con le seguenti colonne principali:
 - Gestione dei valori mancanti
 - Pulizia del testo (lowercase, rimozione punteggiatura, stopwords, ecc.)
 - Encoding delle variabili categoriche
-- Feature engineering, ad esempio:
+- Feature engineering:
   - Rapporto parole/caratteri
   - Valore assoluto del sentiment
   - Indicatori di stile linguistico
@@ -71,12 +70,10 @@ Il dataset contiene **500 osservazioni** con le seguenti colonne principali:
 ---
 
 ### 4️⃣ Modellazione
-Costruisci e confronta **almeno due modelli**, ad esempio:
-
 - Logistic Regression
 - Random Forest
 - Support Vector Machine (SVM)
-- (Bonus) Modelli NLP avanzati
+- Modelli NLP avanzati
 
 **Target:** `label`
 
