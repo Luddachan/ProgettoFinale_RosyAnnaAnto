@@ -1,0 +1,4 @@
+                Model  Accuracy  F1-Score
+      BERT Fine-tuned  1.000000  1.000000
+  Hybrid (BERT+Style)  1.000000  1.000000
+Baseline (Style Only)  0.813333  0.812333
