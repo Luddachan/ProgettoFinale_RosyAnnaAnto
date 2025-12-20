@@ -1,0 +1,13 @@
+sentence_length_cv
+burstiness_index
+pos_bigram_entropy
+dependency_depth_mean
+lexical_compression_ratio
+function_word_ratio
+sentence_similarity_drift
+structural_redundancy
+sentiment_variance
+readability_oscillation
+clause_density
+hapax_density
+template_bias_score
