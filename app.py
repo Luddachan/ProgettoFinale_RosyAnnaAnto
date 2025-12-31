@@ -1,4 +1,7 @@
 import os
+from db import init_db, save_prediction
+from db import get_last_predictions
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ['USE_TF'] = '0'
 os.environ['USE_TORCH'] = '1'
@@ -29,6 +32,14 @@ import json
 
 app = Flask(__name__)
 CORS(app)
+
+# =====================================================================
+# DATABASE INIT
+# =====================================================================
+
+print("🗄️  Initializing database...")
+init_db()
+
 
 # ============================================================================
 # GLOBAL CONFIGURATION
@@ -597,6 +608,36 @@ def predict_local_fallback(text, features, disguise_score):
 # ============================================================================
 # API ENDPOINTS
 # ============================================================================
+@app.route('/predictions', methods=['GET'])
+def predictions():
+    try:
+        limit = request.args.get('limit', default=10, type=int)
+
+        records = get_last_predictions(limit)
+
+        results = [
+            {
+                "timestamp": r[0],
+                "prediction": r[1],
+                "confidence": r[2],
+                "model_version": r[3]
+            }
+            for r in records
+        ]
+
+        return jsonify({
+            "count": len(results),
+            "predictions": results
+        })
+
+    except Exception as e:
+        print(f"❌ Error fetching predictions: {e}")
+        return jsonify({
+            "error": "Unable to fetch predictions",
+            "details": str(e)
+        }), 500
+
+
 
 @app.route('/')
 def home():
@@ -619,36 +660,65 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
+        # ============================
+        # READ & VALIDATE INPUT
+        # ============================
         data = request.get_json()
-        
+
         if not data or 'text' not in data:
             return jsonify({
                 'error': 'Missing "text" field in request body'
             }), 400
-        
+
         text = data['text']
-        
+
         if len(text.strip()) < MIN_TEXT_LENGTH:
             return jsonify({
                 'error': f'Text too short. Minimum {MIN_TEXT_LENGTH} characters required.'
             }), 400
-        
+
+        # ============================
+        # RUN PREDICTION PIPELINE
+        # ============================
         result = predict_text_backend(text)
-        
+
+        # ============================
+        # LOG TO CONSOLE
+        # ============================
         print(f"\n📝 Prediction:")
         print(f"   Text length: {len(text)} chars")
         print(f"   Result: {result['label']}")
         print(f"   Confidence: {result['confidence']:.1f}%")
         print(f"   Disguise Score: {result.get('disguise_score', 0):.2f}/10")
-        
+
+        # ============================
+        # SAVE RESULT TO DATABASE
+        # ============================
+        try:
+            save_prediction(
+                prediction="AI" if "AI-Generated" in result["label"] else "Human",
+                confidence=result["confidence"],
+                lexical_diversity=result["features"].get("lexical_compression_ratio"),
+                burstiness=result["features"].get("burstiness_index"),
+                avg_sentence_length=result["features"].get("sentence_length_cv"),
+                model_version=result["model_used"]
+            )
+            print("💾 Prediction saved to database")
+        except Exception as db_error:
+            print(f"⚠️ Database save failed: {db_error}")
+
+        # ============================
+        # RETURN RESPONSE
+        # ============================
         return jsonify(result)
-    
+
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"❌ Prediction error: {e}")
         return jsonify({
-            'error': str(e),
-            'message': 'An error occurred during prediction'
+            'error': 'Internal prediction error',
+            'details': str(e)
         }), 500
+
 
 @app.route('/health', methods=['GET'])
 def health():

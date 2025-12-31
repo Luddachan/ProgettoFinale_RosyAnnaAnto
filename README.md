@@ -95,3 +95,91 @@ Il backend espone un’API REST per l’analisi dei testi.
 {
   "text": "Testo da analizzare"
 }
+
+## Output
+{
+  "isAI": true,
+  "confidence": 87.3,
+  "metrics": {
+    "lexical_diversity": 0.42,
+    "burstiness": 3.1,
+    "avg_sentence_length": 18.7
+  }
+}
+
+## 🎨 Frontend – React App
+
+Il frontend fornisce un’interfaccia web interattiva per:
+
+inserimento del testo
+
+validazione dell’input
+
+visualizzazione dei risultati e delle metriche
+
+comunicazione diretta con il backend tramite REST API
+
+## 🐳 Containerizzazione con Docker
+
+Il sistema è completamente containerizzato tramite Docker Compose, che orchestra:
+
+backend AI (FastAPI + modelli ML)
+
+frontend React
+
+Avvio del progetto
+docker-compose build
+docker-compose up
+
+| Servizio |  | Descrizione     |
+| -------- |  | --------------- |
+| Backend  |  | API AI Detector |
+| Frontend |  | Interfaccia Web |
+
+La comunicazione tra frontend e backend avviene tramite service name Docker, garantendo portabilità e riproducibilità.
+
+ ## 🎓 Scelte Progettuali
+
+Separazione tra training e inference
+
+Approccio ibrido per bilanciare performance e interpretabilità
+
+Containerizzazione per:
+
+riproducibilità degli esperimenti
+
+isolamento dell’ambiente
+
+semplicità di deploy
+
+Interfaccia grafica come strumento di analisi e non solo demo
+
+## ⚠️ Limiti e Sviluppi Futuri
+
+Generalizzazione rispetto a modelli AI futuri
+
+Integrazione del supporto GPU (CUDA)
+
+Valutazione cross-domain
+
+Logging e monitoring delle predizioni
+
+Supporto per analisi batch
+
+## 👤 Autore
+
+Progetto sviluppato come lavoro accademico nell’ambito di Machine Learning e Natural Language Processing.
+
+## 🏁 Conclusione
+
+Il progetto dimostra come sia possibile costruire un AI Detector moderno e completo, combinando:
+
+analisi statistica
+
+modelli deep learning
+
+interpretabilità linguistica
+
+ingegneria del software
+
+Il risultato è un sistema modulare, riproducibile e pronto al deploy.
