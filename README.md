@@ -2,11 +2,6 @@
   <img src="assets/architecture.avif" alt="Human vs AI Concept" width="800">
 </p>
 
-<p align="center">
-  <video src="assets/video1.mp4" width="800" controls muted autoplay loop>
-    Il tuo browser non supporta il tag video.
-  </video>
-</p>
 
 
 # 🧠 AI Detector – Hybrid BERT & Stylometric Analysis
