@@ -2,6 +2,13 @@
   <img src="assets/architecture.avif" alt="Human vs AI Concept" width="800">
 </p>
 
+<p align="center">
+  <video src="assets/video1.mp4" width="800" controls muted autoplay loop>
+    Il tuo browser non supporta il tag video.
+  </video>
+</p>
+
+
 # 🧠 AI Detector – Hybrid BERT & Stylometric Analysis
 
 ## 📌 Overview
@@ -88,6 +95,17 @@ Queste feature forniscono un livello di **interpretabilità** complementare ai m
 - Migliore robustezza e generalizzazione rispetto ad approcci singoli
 
 ---
+
+## 📊 Risultati
+
+| Architettura              | Accuracy (Test) | Punti di forza |
+|--------------------------|----------------|---------------|
+| **Hybrid (BERT + Style)** | **97.83%**     | Unisce contesto semantico e impronta stilistica |
+| LSTM (Recurrent)         | 97.03%         | Cattura dipendenze sequenziali |
+| BERT Fine-tuned          | 96.75%         | Comprensione semantica profonda |
+| CNN (Convolutional)      | 92.50%         | Ottimo nel rilevare pattern locali (n-gram) |
+| Baseline (Style Only)    | 86.72%         | Interpretazione delle abitudini di scrittura |
+
 
 ## ⚙️ Backend – FastAPI
 
