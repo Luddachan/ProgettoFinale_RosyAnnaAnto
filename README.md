@@ -2,10 +2,6 @@
   <img src="assets/architecture.avif" alt="Human vs AI Concept" width="800">
 </p>
 
-<p align="center">
-  <img src="assets/ai_ex.gif" width="380"/>
-  <img src="assets/hum.gif" width="380"/>
-</p>
 
 
 # 🧠 AI Detector – Hybrid BERT & Stylometric Analysis
@@ -17,6 +13,12 @@ L'obiettivo è distinguere testi **scritti da esseri umani** da testi **generati
 Il sistema è stato progettato come applicazione **full-stack containerizzata**, includendo backend AI, frontend web e orchestrazione tramite Docker.
 
 ---
+
+<p align="center">
+  <img src="assets/ai_ex.gif" width="380"/>
+  <img src="assets/hum.gif" width="380"/>
+</p>
+
 
 ## 🏗️ Architettura del Sistema
 
@@ -181,6 +183,13 @@ La comunicazione tra frontend e backend avviene tramite service name Docker, gar
 ---
 ## 🗄️ Persistenza dei Dati con SQLite3
 
+<p align="center">
+  <img src="assets/tab_pred.png" width="800">
+  <img src="assets/tab_pred.png" width="200">
+</p>
+
+
+
 Per completare il sistema di AI Detection, non ci siamo limitati alla sola predizione in tempo reale, ma abbiamo introdotto un livello di **persistenza dei dati**, fondamentale per garantire tracciabilità, analisi e validazione dei risultati.
 
 A questo scopo è stato utilizzato **SQLite3**, un database relazionale embedded, leggero e privo di dipendenze esterne.
@@ -200,6 +209,8 @@ SQLite3 è particolarmente adatto a questo tipo di progetto per diversi motivi:
 Essendo il progetto di natura accademica e orientato all’analisi, SQLite rappresenta una scelta progettuale equilibrata tra semplicità ed efficacia.
 
 ---
+
+
 
 ### 🧠 Ruolo del Database nel Sistema
 
