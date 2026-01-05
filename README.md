@@ -3,9 +3,9 @@
 </p>
 
 <p align="center">
-  <img src="assets/ai_ex.gif" width="800" />
+  <img src="assets/ai_ex.gif" width="380"/>
+  <img src="assets/hum.gif" width="380"/>
 </p>
-
 
 
 # 🧠 AI Detector – Hybrid BERT & Stylometric Analysis
